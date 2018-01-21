@@ -6,9 +6,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         responseText = (TextView) findViewById(R.id.responseText);
-        data=(TextView)findViewById(R.id.data);
+        //data=(TextView)findViewById(R.id.data);
+
+        inflate=(TableLayout)findViewById(R.id.mytable);
+
 
 
 
@@ -116,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 for (UserList.Datum datum : datumList) {
-                    data.append("\n"+"id : " + datum.id + " name: " + datum.first_name + " " + datum.last_name + " avatar: " + datum.avatar);
+                  //  data.append("\n"+"id : " + datum.id + " name: " + datum.first_name + " " + datum.last_name + " avatar: " + datum.avatar);
+                          createTable(Integer.toString(datum.id),datum.first_name+" "+datum.last_name,datum.avatar);
+
                     Toast.makeText(getApplicationContext(), "id : " + datum.id + "  name: " + datum.first_name + " " + datum.last_name + "  avatar: " + datum.avatar, Toast.LENGTH_SHORT).show();
                 }
 
@@ -145,7 +154,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 for (UserList.Datum datum : datumList) {
-                    data.append("\n"+"id : " + datum.id + " name: " + datum.first_name + " " + datum.last_name + " avatar: " + datum.avatar);
+                   // data.append("\n"+"id : " + datum.id + " name: " + datum.first_name + " " + datum.last_name + " avatar: " + datum.avatar);
+                    createTable(Integer.toString(datum.id),datum.first_name+" "+datum.last_name,datum.avatar);
                     Toast.makeText(getApplicationContext(), "id : " + datum.id + "  name: " + datum.first_name + " " + datum.last_name + "  avatar: " + datum.avatar, Toast.LENGTH_SHORT).show();
                 }
 
@@ -157,6 +167,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public void createTable(String txt,String txt1,String imgurl){
+
+        TableRow row=new TableRow(this);
+
+
+        TextView idtext=new TextView(this);
+         idtext.setText(txt);
+
+        TextView  name=new TextView(this);
+
+        name.setText(txt1);
+
+        ImageView image=new ImageView(this);
+        image.setPadding(5,5,5,5);
+        Picasso.with(this)
+                .load(imgurl)
+                .resize(90,60)
+                .into(image);
+
+        row.addView(idtext);
+        row.addView(name);
+        row.addView(image);
+
+        inflate.addView(row);
     }
 
     @Override

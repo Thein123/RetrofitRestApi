@@ -17,11 +17,45 @@
         android:layout_height="wrap_content"
         android:text="Waiting response for Rest service ...."
         android:id="@+id/responseText"/>
-    <TextView
-        android:id="@+id/data"
+
+    <TableLayout
         android:layout_below="@+id/responseText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mytable">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="#FF33B5E5"
+                android:text="Id"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#FF33B5E5"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"
+                android:text="Name " />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView"
+                android:padding="5dp"
+                android:text="Avater"
+                android:background="#FF33B5E5"
+                />
+        </TableRow>
+    </TableLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/data"-->
+        <!--android:layout_below="@+id/responseText"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
     
     
 </RelativeLayout>
